@@ -1,8 +1,6 @@
 <?php
 
-include( 'includes/database.php' );
-include( 'includes/config.php' );
-include( 'includes/functions.php' );
+include( '../config/config.php' );
 
 secure();
 

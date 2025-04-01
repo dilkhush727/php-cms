@@ -1,6 +1,6 @@
 <?php
 
-include( 'includes/config.php' );
+include( '../config/config.php' );
 
 session_destroy();
 

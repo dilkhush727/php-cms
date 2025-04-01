@@ -1,70 +1,47 @@
 <?php
 
-include( 'admin/includes/database.php' );
-include( 'admin/includes/config.php' );
-include( 'admin/includes/functions.php' );
+include( 'config/config.php' );
+include( 'includes/header.php' );
+
+
+// Get User Image
+$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;  // Get user ID from session
+$user_data = getUserData($user_id);
 
 ?>
-<!doctype html>
-<html>
-<head>
-  
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-  
-  <title>Website Admin</title>
-  
-  <link href="styles.css" type="text/css" rel="stylesheet">
-  
-  <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-  
-</head>
-<body>
 
-  <h1>Welcome to My Website!</h1>
-  <p>This is the website frontend!</p>
 
-  <?php
 
-  $query = 'SELECT *
-    FROM projects
-    ORDER BY date DESC';
-  $result = mysqli_query( $connect, $query );
 
-  ?>
+<main class="mt-5">
 
-  <p>There are <?php echo mysqli_num_rows($result); ?> projects in the database!</p>
 
-  <hr>
 
-  <?php while($record = mysqli_fetch_assoc($result)): ?>
+<div class="container home-banner">
+  <div class="row">
+    <div class="col-lg-6 col-md-5 col-sm-12 col-12 d-flex align-items-center justify-content-center">
 
-    <div>
-
-      <h2><?php echo $record['title']; ?></h2>
-      <?php echo $record['content']; ?>
-
-      <?php if($record['photo']): ?>
-
-        <p>The image can be inserted using a base64 image:</p>
-
-        <img src="<?php echo $record['photo']; ?>">
-
-        <p>Or by streaming the image through the image.php file:</p>
-
-        <img src="admin/image.php?type=project&id=<?php echo $record['id']; ?>&width=100&height=100">
-
-      <?php else: ?>
-
-        <p>This record does not have an image!</p>
-
-      <?php endif; ?>
-
+    <?php
+        if (is_array($user_data)) {
+          echo "<img src='admin/" . htmlspecialchars($user_data['image']) . "' class='rounded-circle user-image-home' alt='User Photo'>";
+      } else {
+          echo $user_data;
+      }
+    ?>
+    
+      <!-- <img src="assets/images/profile-img.jpg" class="rounded-circle w-100" alt="Profile Picture"> -->
     </div>
+    <div class="col-lg-6 col-md-7 col-sm-12 col-12 d-flex align-items-center justify-content-center mt-3">
+      <div>
+        <h5 class="title-small"><?=$user_data['title_small']; ?></h5>
+        <h2 class="title-home"><?=$user_data['title_main']; ?></h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <hr>
-
-  <?php endwhile; ?>
-
-</body>
-</html>
+</main>
+  
+  <?php
+    include( 'includes/footer.php' );
+  ?>
