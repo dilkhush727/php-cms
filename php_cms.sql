@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2025 at 12:02 AM
+-- Generation Time: Apr 02, 2025 at 08:00 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -37,13 +37,6 @@ CREATE TABLE `contact_us` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `contact_us`
---
-
-INSERT INTO `contact_us` (`id`, `name`, `email`, `phone`, `subject`, `message`, `created_at`) VALUES
-(1, 'Abhiraj', 'abhirajdogra@gmail.com', '(647) 532-7682', 'Test Subject', 'This is test description', '2025-04-01 17:57:03');
-
 -- --------------------------------------------------------
 
 --
@@ -55,25 +48,11 @@ CREATE TABLE `projects` (
   `title` varchar(100) DEFAULT NULL,
   `content` text NOT NULL,
   `url` varchar(100) NOT NULL,
+  `youtube_link` varchar(255) DEFAULT NULL,
   `type` enum('Website','Graphic Design') DEFAULT NULL,
   `date` date DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `projects`
---
-
-INSERT INTO `projects` (`id`, `title`, `content`, `url`, `type`, `date`, `photo`) VALUES
-(1, 'Project One', '<p>Cras sed erat varius, ornare odio non, mattis ex. Aliquam aliquam, enim et dapibus tristique, lorem massa auctor diam, vel euismod tellus massa mollis arcu. Ut in maximus quam. Nulla nec dui nulla. Donec a efficitur quam. Morbi hendrerit ipsum quam, eu aliquet nunc gravida ut. Suspendisse posuere, mauris vel placerat eleifend, arcu dui hendrerit ex, vitae consequat ante tellus finibus lorem. Sed in interdum lectus.</p>', 'https://codeadam.ca', 'Website', '2020-11-01', NULL),
-(2, 'Project Two', '<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum eget tortor dapibus, dictum ante in, mattis libero.</p>', '', 'Graphic Design', '2020-11-25', NULL),
-(3, 'wefrwef Edited', '<p>wafdsfs</p>', 'fsdfsdfs', 'Website', '0000-00-00', NULL),
-(5, 'New Project', '<p>This is test description</p>', 'http://testproject.com', 'Graphic Design', '2025-04-02', NULL),
-(6, 'dddddddddd', '<p>dddddddddddddddddddddddd</p>', '', 'Website', '0000-00-00', NULL),
-(7, 'qqqqqqqqqq', '<p>ssdsd</p>', '', 'Website', '0000-00-00', NULL),
-(8, 'New with photo', '<p>Test desc</p>', 'http://testproject.com', 'Website', '2025-04-04', 'uploads/img_67ea24b5d7ee6.png'),
-(9, 'dfsdfsdf', '<p>sdfdsf</p>', 'sd', 'Website', '0000-00-00', 'uploads/img_67ea24c343481.png'),
-(10, 'cddad', '<p>asdasd</p>', '', 'Website', '0000-00-00', 'uploads/img_67ea24d20719f.png');
 
 -- --------------------------------------------------------
 
@@ -86,14 +65,6 @@ CREATE TABLE `skills` (
   `title` varchar(100) DEFAULT NULL,
   `proficiency` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `skills`
---
-
-INSERT INTO `skills` (`id`, `title`, `proficiency`) VALUES
-(24, 'PHP', 90),
-(25, 'JavaScript', 85);
 
 -- --------------------------------------------------------
 
@@ -117,7 +88,12 @@ CREATE TABLE `users` (
   `website` varchar(255) DEFAULT NULL,
   `title_small` varchar(255) DEFAULT NULL,
   `title_main` varchar(255) DEFAULT NULL,
+  `audio` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `linkedin` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
   `active` enum('Yes','No') NOT NULL DEFAULT 'Yes',
   `dateAdded` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -126,8 +102,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `description`, `designation`, `phone`, `city`, `degree`, `freelance`, `dob`, `website`, `title_small`, `title_main`, `image`, `active`, `dateAdded`) VALUES
-(1, 'Dilkhush', 'Yadav', 'dilkhushyadav@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'A results-driven Web Developer with 5+ years of experience in software engineering and web development.\r\nSpecializing in back-end development and experienced with all stages of the development cycle for dynamic web projects. Well-versed in numerous programming languages including PHP, JavaScript, HTML, CSS, ReactJS, MySQLi, etc. Strong background in project management and customer relations.\r\nAdept at collaborating with dynamic teams to build high-quality websites and identify opportunities to enhance the user experience.', 'Web Developer', '+1 3333332', 'Toronto, Canada', 'Post Graduation', 1, '1994-12-25', 'https://dilkhushyadav.com/', 'Full Stack Developer', 'I\'m a passionate Full Stack Developer', 'uploads/img_67ec60b386edd.jpg', 'Yes', '2025-04-01 17:55:26');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `description`, `designation`, `phone`, `city`, `degree`, `freelance`, `dob`, `website`, `title_small`, `title_main`, `audio`, `image`, `linkedin`, `instagram`, `facebook`, `twitter`, `active`, `dateAdded`) VALUES
+(1, 'Dilkhush', 'Yadav', 'dilkhushyadav@gmail.com', '7de33fccdc93716e92deccbb58ed729b', 'A results-driven Web Developer with 5+ years of experience in software engineering and web development.\r\nSpecializing in back-end development and experienced with all stages of the development cycle for dynamic web projects. Well-versed in numerous programming languages including PHP, JavaScript, HTML, CSS, ReactJS, MySQLi, etc. Strong background in project management and customer relations.\r\nAdept at collaborating with dynamic teams to build high-quality websites and identify opportunities to enhance the user experience.', 'Web Developer', '+1 3333332', 'Toronto, Canada', 'Post Graduation', 0, '1994-12-25', 'https://dilkhushyadav.com/', 'Full Stack Developer', 'I\'m a passionate Full Stack Developer', 'uploads/audio/audio_67ecc74e7da01.mp3', 'uploads/img_67ec60b386edd.jpg', 'https://www.linkedin.com/in/dilkhushyadav/', 'https://www.instagram.com/dilkhush727', 'https://dilkhushyadav.com/', 'https://twitter.com/dilkhush727', 'Yes', '2025-04-02 01:50:56');
 
 --
 -- Indexes for dumped tables
@@ -165,19 +141,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

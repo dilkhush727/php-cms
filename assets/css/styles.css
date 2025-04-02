@@ -134,6 +134,10 @@ th {
   white-space: nowrap;
 }
 
+.ml-4{
+  margin-left: 4px;
+}
+
 .btn{
   border-radius: 2px;
 }
@@ -389,7 +393,7 @@ footer .social a:hover{
 }
 
 /* Hide the default audio controls */
-audio {
+.audio-player-container audio {
   display: none;
 }
 
