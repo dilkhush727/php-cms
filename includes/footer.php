@@ -5,10 +5,10 @@
         <p>© <span>Copyright</span> <strong>Dilkhush</strong> <span>All Rights Reserved.</span></p>
       </div>
       <div class="social d-flex justify-content-center">
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="<?=getUserData()['linkedin']; ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="<?=getUserData()['instagram']; ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="<?=getUserData()['facebook']; ?>" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="<?=getUserData()['twitter']; ?>" target="_blank"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
 

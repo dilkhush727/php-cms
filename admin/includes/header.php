@@ -16,6 +16,8 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+
+  <script src="../assets/js/script.js"></script>
   
 </head>
 <body>

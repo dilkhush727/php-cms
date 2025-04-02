@@ -11,9 +11,7 @@ $query_skills = 'SELECT * FROM skills';
 $result_skills = mysqli_query( $connect, $query_skills );
 
 
-// Get User Image
-$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;  // Get user ID from session
-$user_data = getUserData($user_id);
+$user_data = getUserData();
 
 ?>
 

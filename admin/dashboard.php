@@ -55,7 +55,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-4">
-        <a href="javascript:;" class="card">
+        <a href="<?=base_url('admin/'); ?>skills.php" class="card">
           <h1><?=$totalSkills; ?></h1>
           <p>Skills</p>
         </a>
@@ -81,6 +81,22 @@
           <div>
             <h5 class="title-small"><?=$user_data['title_small']; ?></h5>
             <h2><?=$user_data['title_main']; ?></h2>
+
+            <div>
+              <?php if (!empty($user_data['audio'])): ?>
+                <div class="audio-player-container">
+                  <audio id="audioPlayer" controls>
+                    <source src="<?php echo $user_data['audio']; ?>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+
+                <div class="audio-player-container">
+                  <button id="playPauseBtn" class="play-btn">Play Introduction</button>
+                </div>
+              <?php endif; ?>
+            </div>
+            
           </div>
         </div>
       </div>

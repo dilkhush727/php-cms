@@ -40,7 +40,33 @@ $result = mysqli_query( $connect, $query );
 
             <?php echo $record['content']; ?>
             <p class="card-content"></p>
-            <p class="card-footer"><a class="btn-cta" href="#">View details &raquo;</a></p>
+            <p class="card-footer">
+                <?php
+                  if($record['url'] != ''){
+                    echo '<a class="btn btn-warning" href="'. $record['url']. '" target="_blank">View details &raquo;</a>';
+                  }else{
+                    echo '<a class="btn btn-warning disabled" href="javascript:;" disabled>View details &raquo;</a>';
+                  }
+                ?>
+
+                <?php if($record['youtube_link'] != ''){ ?>
+                    <a class="btn btn-info" href="javascript:;" onclick="$(this).parent().parent().find('.project-embed-block').css('display', 'block');">Play Video &raquo;</a>
+                  <?php }else{ ?>
+                    <a class="btn btn-info disabled" href="javascript:;" disabled>Play Video &raquo;</a>
+                <?php } ?>
+
+            </p>
+
+            <?php if($record['youtube_link'] != ''){ ?>
+
+              <div class="project-embed-block">
+                <iframe src="<?=$record['youtube_link']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                <i class="fa fa-times" onclick="$(this).parent().css('display', 'none');"></i>
+              </div>
+
+            <?php } ?>
+
           </div>
         </div>
 

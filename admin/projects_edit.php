@@ -22,7 +22,8 @@ if (isset($_POST['title'])) {
           content = "' . mysqli_real_escape_string($connect, $_POST['content']) . '",
           date = "' . mysqli_real_escape_string($connect, $_POST['date']) . '",
           type = "' . mysqli_real_escape_string($connect, $_POST['type']) . '",
-          url = "' . mysqli_real_escape_string($connect, $_POST['url']) . '"';
+          url = "' . mysqli_real_escape_string($connect, $_POST['url']) . '",
+          youtube_link = "' . mysqli_real_escape_string($connect, $_POST['youtube_link']) . '"';
 
       // Check if a new file was uploaded
       if (!empty($_FILES['photo']['name'])) {
@@ -101,7 +102,7 @@ include( 'includes/header.php' );
     
     <div class="mb-3">
       <label for="content">Content:</label>
-      <textarea type="text" name="content" id="content" rows="5" class="form-control" required><?php echo htmlentities( $record['content'] ); ?></textarea>
+      <textarea type="text" name="content" id="content" rows="5" class="form-control" placeholder="Content" required><?php echo htmlentities( $record['content'] ); ?></textarea>
     </div>
     
     <script>
@@ -119,51 +120,40 @@ include( 'includes/header.php' );
     
     
 
-    <div class="mb-3">
-      <label for="url">URL:</label>
-      <input type="text" name="url" id="url" value="<?php echo htmlentities( $record['url'] ); ?>" class="form-control">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="url">URL:</label>
+        <input type="text" name="url" id="url" value="<?php echo htmlentities( $record['url'] ); ?>" class="form-control" placeholder="Title">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="url">You Tube Embed Link:</label>
+        <input type="text" name="youtube_link" id="youtube_link" value="<?php echo htmlentities( $record['youtube_link'] ); ?>" class="form-control" placeholder="You Tube Embed Link">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="date">Date:</label>
-      <input type="date" name="date" id="date" value="<?php echo htmlentities( $record['date'] ); ?>" class="form-control">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" value="<?php echo htmlentities( $record['date'] ); ?>" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="type">Type:</label>
+        <?php
+        
+        $values = array( 'Website', 'Graphic Design' );
+        
+        echo '<select name="type" id="type" class="form-control">';
+        foreach( $values as $key => $value )
+        {
+          echo '<option value="'.$value.'"';
+          if( $value == $record['type'] ) echo ' selected="selected"';
+          echo '>'.$value.'</option>';
+        }
+        echo '</select>';
+        
+        ?>
+      </div>
     </div>
-
-  <div class="mb-3">
-    <label for="type">Type:</label>
-      <?php
-      
-      $values = array( 'Website', 'Graphic Design' );
-      
-      echo '<select name="type" id="type" class="form-control">';
-      foreach( $values as $key => $value )
-      {
-        echo '<option value="'.$value.'"';
-        if( $value == $record['type'] ) echo ' selected="selected"';
-        echo '>'.$value.'</option>';
-      }
-      echo '</select>';
-      
-      ?>
-  </div>
-
-  <div class="mb-3">
-    <label for="type">Type:</label>
-      <?php
-      
-      $values = array( 'Website', 'Graphic Design' );
-      
-      echo '<select name="type" id="type" class="form-control">';
-      foreach( $values as $key => $value )
-      {
-        echo '<option value="'.$value.'"';
-        if( $value == $record['type'] ) echo ' selected="selected"';
-        echo '>'.$value.'</option>';
-      }
-      echo '</select>';
-      
-      ?>
-  </div>
 
   <!-- Display Existing Image -->
   <div class="mb-3">

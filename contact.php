@@ -52,28 +52,28 @@ if (isset($_POST['email'])) {
       <div class="col-lg-4">
         <!-- Contact information -->
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-12 col-md-6 col-sm-6 mt-4">
+          <div class="col-lg-12 col-md-6 col-sm-6 mt-2">
             <h3>Email</h3>
-            <p>dilkhushyadav@gmail.com</p>
+            <p><?=getUserData()['email']; ?></p>
           </div>
 
-          <div class="col-lg-12 col-md-6 col-sm-6 mt-4">
+          <div class="col-lg-12 col-md-6 col-sm-6 mt-2">
             <h3>Phone</h3>
-            <p>+1 (647) 532-7682</p>
+            <p><?=getUserData()['phone']; ?></p>
           </div>
 
-          <div class="col-lg-12 col-md-6 col-sm-6 mt-4 mt-md-0">
+          <div class="col-lg-12 col-md-6 col-sm-6 mt-2">
             <h3>City</h3>
-            <p>Toronto, Canada</p>
+            <p><?=getUserData()['city']; ?></p>
           </div>
 
-          <div class="col-lg-12 col-md-6 col-sm-6 mt-4 mt-md-0">
+          <div class="col-lg-12 col-md-6 col-sm-6 mt-2">
             <h3>Social Profiles</h3>
             <div class="social-links">
-              <a href="https://www.linkedin.com/in/dilkhushyadav" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/dilkhush727" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.facebook.com/dilkhush727" class="facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-              <a href="https://twitter.com/dilkhush727" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="<?=getUserData()['linkedin']; ?>" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="<?=getUserData()['instagram']; ?>" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="<?=getUserData()['facebook']; ?>" class="facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="<?=getUserData()['twitter']; ?>" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
         </div>

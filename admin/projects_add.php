@@ -38,6 +38,7 @@ if (isset($_POST['title'])) {
           date,
           type,
           url,
+          youtube_link,
           photo
       ) VALUES (
           "' . mysqli_real_escape_string($connect, $_POST['title']) . '",
@@ -45,6 +46,7 @@ if (isset($_POST['title'])) {
           "' . mysqli_real_escape_string($connect, $_POST['date']) . '",
           "' . mysqli_real_escape_string($connect, $_POST['type']) . '",
           "' . mysqli_real_escape_string($connect, $_POST['url']) . '",
+          "' . mysqli_real_escape_string($connect, $_POST['youtube_link']) . '",
           "' . mysqli_real_escape_string($connect, $photoPath) . '"
       )';
 
@@ -73,12 +75,12 @@ include( 'includes/header.php' );
 
   <div class="mb-3">
     <label for="title">Title:</label>
-    <input type="text" name="title" id="title" class="form-control" required>
+    <input type="text" name="title" id="title" class="form-control" placeholder="Title" required>
   </div>
 
   <div class="mb-3">
     <label for="content">Content:</label>
-    <textarea type="text" name="content" id="content" rows="10" class="form-control"></textarea>
+    <textarea type="text" name="content" id="content" rows="10" class="form-control" placeholder="Content"></textarea>
   </div>
     
     <script>
@@ -94,18 +96,24 @@ include( 'includes/header.php' );
       
     </script>
 
-    <div class="mb-3">
-      <label for="url">URL:</label>
-      <input type="text" name="url" id="url" class="form-control">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="url">URL:</label>
+        <input type="text" name="url" id="url" class="form-control" placeholder="URL">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="youtube_link">You Tube Embed Link:</label>
+        <input type="text" name="youtube_link" id="youtube_link" class="form-control" placeholder="You Tube Embed Link">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="date">Date:</label>
-      <input type="date" name="date" id="date" class="form-control">
-    </div>
-
-    <div class="mb-3">
-      <label for="type">Type:</label>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" class="form-control" placeholder="Date">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="type">Type:</label>
         <?php
         
         $values = array( 'Website', 'Graphic Design' );
@@ -119,6 +127,7 @@ include( 'includes/header.php' );
         echo '</select>';
         
         ?>
+      </div>
     </div>
 
     <div class="mb-3">
